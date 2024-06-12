@@ -1,0 +1,5 @@
+https://github.com/joaouriel10/api-gateway
+https://github.com/joaouriel10/api-tasks
+https://github.com/joaouriel10/api-logs
+https://github.com/joaouriel10/api-users
+https://github.com/joaouriel10/app-tasks
