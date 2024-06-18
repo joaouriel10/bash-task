@@ -48,32 +48,6 @@ while IFS= read -r repo; do
         fi
     fi
 
-    # Executa os comandos pnpm prisma db push e pnpm prisma generate se o projeto for api-tasks ou api-users
-    if [[ "$project_name" == "api-tasks" || "$project_name" == "api-users" ]]; then
-        if command -v pnpm &> /dev/null; then
-            echo "Executando pnpm prisma db push para $project_name"
-            pnpm prisma db push
-            echo "Executando pnpm prisma generate para $project_name"
-            pnpm prisma generate
-        else
-            echo "pnpm não está instalado. Por favor, instale pnpm para continuar."
-        fi
-    fi
-
-    # Inicia o projeto em um novo terminal com pnpm start:dev ou pnpm dev para api-tasks
-    if command -v terminator &> /dev/null; then
-        echo "Iniciando $project_name com pnpm dev em um novo terminal"
-        sleep 1
-        if [[ "$project_name" == "api-tasks" ]]; then
-            terminator -e "cd $(pwd) && pnpm dev" &
-        else
-            echo "Iniciando $project_name com pnpm start:dev em um novo terminal"
-            terminator -e "cd $(pwd) && pnpm start:dev" &
-        fi
-    else
-        echo "terminator não está instalado. Por favor, instale terminator para continuar."
-    fi
-
     # Volta para o diretório pai
     cd ..
 done < ../repos.txt
