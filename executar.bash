@@ -41,7 +41,7 @@ while IFS= read -r repo; do
     if [[ "$project_name" == "api-tasks" || "$project_name" == "api-logs" || "$project_name" == "api-users" ]]; then
         if [ -f docker-compose.yml ]; then
             echo "Rodando docker compose up -d para $project_name"
-            docker compose up -d --force-recreate
+            docker compose up -d --build
             sleep 3
         else
             echo "Arquivo docker-compose.yml não encontrado em $project_name"
